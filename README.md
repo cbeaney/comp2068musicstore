@@ -1,2 +1,7 @@
-# comp-2068-thursday
+BBC Music Store!
+
 A Music Store
+
+Ben 
+Barry 
+Charlie

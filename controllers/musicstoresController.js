@@ -136,7 +136,7 @@ exports.update = (req, res) => {
   });
 };
 
-exports.destory = (req, res) => {
+exports.destroy = (req, res) => {
   req.isAuthenticated();
 
   Musicstore.deleteOne({

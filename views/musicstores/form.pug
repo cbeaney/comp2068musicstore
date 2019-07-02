@@ -8,22 +8,22 @@ form(action=(musicstore ? '/musicstores/update' : '/musicstores'), method="POST"
 
     .form-group
         label Genre
-        textarea.form-control(name="musicstore[content]")
+        textarea.form-control(name="musicstore[genre]")
             = musicstore ? musicstore.genre : null
 
     .form-group
         label Album
-        textarea.form-control(name="musicstore[content]")
+        textarea.form-control(name="musicstore[album]")
             = musicstore ? musicstore.album : null
 
     .form-group
         label Artist
-        textarea.form-control(name="musicstore[content]")
+        textarea.form-control(name="musicstore[artist]")
             = musicstore ? musicstore.artist : null
 
     .form-group
         label Price
-        textarea.form-control(name="musicstore[content]")
+        textarea.form-control(name="musicstore[price]")
             = musicstore ? musicstore.price : null
 
         

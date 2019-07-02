@@ -22,9 +22,18 @@ block content
                 a(href=`/musicstores/${musicstore.id}`)= musicstore.title
               td= musicstore.status
               td
-                if musicstore.user
-                  = `${musicstore.user.firstName} ${musicstore.user.lastName}`
+                a(href=`/musicstores/${musicstore.id}`)= musicstore.genre
+              td= musicstore.status
               td
+                a(href=`/musicstores/${musicstore.id}`)= musicstore.album
+              td= musicstore.status
+              td
+                a(href=`/musicstores/${musicstore.id}`)= musicstore.artist
+              td= musicstore.status
+              td
+                a(href=`/musicstores/${musicstore.id}`)= musicstore.price
+              td= musicstore.status
+              
                 a(href=`/musicstores/${musicstore.id}/edit`) edit
                 = ' | '
                 form.destory(action=`/musicstores/destory`, method="POST", onsubmit=`return confirm("Are you sure you want to delete?")`)

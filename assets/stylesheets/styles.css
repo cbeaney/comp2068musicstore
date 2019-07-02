@@ -34,3 +34,6 @@ body {
   
 }
 
+.table thead th  {
+  table-layout: fixed;
+}

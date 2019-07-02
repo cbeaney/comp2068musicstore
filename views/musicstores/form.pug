@@ -1,0 +1,31 @@
+form(action=(musicstore ? '/musicstores/update' : '/musicstores'), method="POST")
+    if musicstore
+        input(type="hidden", name="id", value=musicstore.id)
+
+    .form-group
+        label Title
+        input.form-control(name="musicstore[title]", required, value=(musicstore ? musicstore.title : null))
+
+    .form-group
+        label Genre
+        textarea.form-control(name="musicstore[content]")
+            = musicstore ? musicstore.genre : null
+
+    .form-group
+        label Album
+        textarea.form-control(name="musicstore[content]")
+            = musicstore ? musicstore.album : null
+
+    .form-group
+        label Artist
+        textarea.form-control(name="musicstore[content]")
+            = musicstore ? musicstore.artist : null
+
+    .form-group
+        label Price
+        textarea.form-control(name="musicstore[content]")
+            = musicstore ? musicstore.price : null
+
+        
+    .form-group
+        button.btn.btn-dark(type="submit") Submit

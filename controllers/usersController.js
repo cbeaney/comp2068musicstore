@@ -10,7 +10,7 @@ exports.create = (req, res) => {
         User.create(req.body.user)
         .then(() => {
             req.flash('success', 'You are now registered.');
-            res.redirect('/login');
+            res.redirect('../login');
         })
         .catch(err => {
             req.flash('error', `ERROR: ${err}`);

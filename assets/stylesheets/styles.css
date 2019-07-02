@@ -16,9 +16,21 @@ body {
   margin-top: 60px;
 }
 
+
 .h1, h1 {
   font-size: 5rem;
-  color: #313131;
+  color: #ffffff;
   text-align: center;
+  text-shadow: 3px 2px black;
+}
+
+.h2, h2 {
+  text-align: justify;
+  padding-top: 50px;
+  padding-right: 50px;
+  padding-left: 1150px;
+  font-size: 2rem;
+  color: #ffffff;
+  
 }
 

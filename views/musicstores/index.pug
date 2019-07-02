@@ -1,0 +1,32 @@
+extends ../layouts/main.pug
+
+block content
+  .container
+    header
+      h1= title
+
+    div
+      table.table.table-striped
+        thead
+          tr
+            th Title
+            th Genre
+            th Album
+            th Artist
+            th Price
+        
+        tbody
+          each musicstore in musicstores
+            tr
+              td
+                a(href=`/musicstores/${musicstore.id}`)= musicstore.title
+              td= musicstore.status
+              td
+                if musicstore.user
+                  = `${musicstore.user.firstName} ${musicstore.user.lastName}`
+              td
+                a(href=`/musicstores/${musicstore.id}/edit`) edit
+                = ' | '
+                form.destory(action=`/musicstores/destory`, method="POST", onsubmit=`return confirm("Are you sure you want to delete?")`)
+                  input(type="hidden", name="id", value=musicstore.id)
+                  input(type="submit", value="delete")

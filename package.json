@@ -1,7 +1,7 @@
 {
-  "name": "comp-2068-thursday",
+  "name": "BBC Music Store",
   "version": "1.0.0",
-  "description": "A blogging platform",
+  "description": "A music store",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,22 +9,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gcsmckinnon/comp-2068-thursday.git"
+    "url": "git+https://github.com/cbeaney/comp2068musicstore"
   },
-  "author": "Shaun McKinnon",
+  "author": "The BBC",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gcsmckinnon/comp-2068-thursday/issues"
+    "url": "https://github.com/cbeaney/comp2068musicstore/issues"
   },
-  "homepage": "https://github.com/gcsmckinnon/comp-2068-thursday#readme",
+  "homepage": "https://github.com/cbeaney/comp2068musicstore#readme",
   "dependencies": {
     "bcrypt": "^3.0.6",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.0.0",
     "express": "^4.16.4",
-    "express-session": "^1.16.1",
+    "express-session": "^1.16.2",
+    "install": "^0.12.2",
     "mongoose": "^5.6.2",
+    "npm": "^6.9.2",
     "pug": "^2.0.3"
   }
 }

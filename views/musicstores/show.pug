@@ -1,0 +1,9 @@
+extends ../layouts/main.pug
+block content
+  .container
+    header
+      h1= musicstore.title
+      small= musicstore.status.toLowerCase()
+
+    div
+      = musicstore.content || "Your song entry is processing..."

@@ -100,13 +100,13 @@ exports.create = (req, res) => {
 exports.edit = (req, res) => {
     req.isAuthenticated();
 
-    Musicstore.findOne({
+    Musicstore.findById({
       id: req.params.id
     })
       .then(musicstore => {
         res.render('musicstores/edit', {
-          musicstore: musicstore,
-          title: `Edit ${musicstore.title}`
+          title: `Edit ${musicstore.title}`,
+          musicstore: musicstore
         });
       })
       .catch(err => {

@@ -19,7 +19,7 @@ exports.authenticate = (req, res) => {
                 req.session.userId = user.id;
 
                 req.flash('success', 'You are now logged in!');
-                res.redirect('/login');
+                res.redirect('/');
             } else {
                 req.flash('error', 'ERROR: Your credentials do not match');
                 res.redirect('/login');

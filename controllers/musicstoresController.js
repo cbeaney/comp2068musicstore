@@ -129,7 +129,7 @@ exports.update = (req, res) => {
   })
   .catch(err => {
     req.flash('error', `ERROR: ${err}`);
-    res.redender('musicstores/edit', {
+    res.render('musicstores/edit', {
       musicstore: req.body.musicstore,
       title: `Edit ${req.body.musicstore.title}`
     });

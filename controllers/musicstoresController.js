@@ -109,7 +109,7 @@ exports.destroy = (req, res) => {
   })
   .then(() => {
     req.flash('success', 'Your song was deleted successfully.');
-    res.rediect("/musicstores");
+    res.redirect("/musicstores");
   })
   .catch(err => {
     req.flash('error', `ERROR: ${err}`);

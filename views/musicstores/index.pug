@@ -14,26 +14,22 @@ block content
             th Album
             th Artist
             th Price
+            th Edit/Delete
         
         tbody
           each musicstore in musicstores
             tr
               td
-                a(href=`/musicstores/${musicstore.id}`)= musicstore.title
-              td= musicstore.status
+                a(`/musicstores/${musicstore.id}`)= musicstore.title
               td
-                a(href=`/musicstores/${musicstore.id}`)= musicstore.genre
-              td= musicstore.status
+                a(`/musicstores/${musicstore.id}`)= musicstore.genre
               td
-                a(href=`/musicstores/${musicstore.id}`)= musicstore.album
-              td= musicstore.status
+                a(`/musicstores/${musicstore.id}`)= musicstore.album
               td
-                a(href=`/musicstores/${musicstore.id}`)= musicstore.artist
-              td= musicstore.status
+                a(`/musicstores/${musicstore.id}`)= musicstore.artist
               td
-                a(href=`/musicstores/${musicstore.id}`)= musicstore.price
-              td= musicstore.status
-              
+                a(`/musicstores/${musicstore.id}`)= musicstore.price
+              td
                 a(href=`/musicstores/${musicstore.id}/edit`) edit
                 = ' | '
                 form.destroy(action=`/musicstores/destroy`, method="POST", onsubmit=`return confirm("Are you sure you want to delete?")`)

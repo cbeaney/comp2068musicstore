@@ -20,15 +20,15 @@ block content
           each musicstore in musicstores
             tr
               td
-                a(`/musicstores/${musicstore.id}`)= musicstore.title
+                a2(`/musicstores/${musicstore.id}`)= musicstore.title
               td
-                a(`/musicstores/${musicstore.id}`)= musicstore.genre
+                a2(`/musicstores/${musicstore.id}`)= musicstore.genre
               td
-                a(`/musicstores/${musicstore.id}`)= musicstore.album
+                a2(`/musicstores/${musicstore.id}`)= musicstore.album
               td
-                a(`/musicstores/${musicstore.id}`)= musicstore.artist
+                a2(`/musicstores/${musicstore.id}`)= musicstore.artist
               td
-                a(`/musicstores/${musicstore.id}`)= musicstore.price
+                a2(`/musicstores/${musicstore.id}`)= musicstore.price
               td
                 a(href=`/musicstores/${musicstore.id}/edit`) edit
                 = ' | '

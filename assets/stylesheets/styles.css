@@ -37,3 +37,45 @@ body {
 .table thead th  {
   table-layout: fixed;
 }
+
+
+a2 {
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.destroy {
+  display: inline;
+}
+
+.destroy>input[type="submit"] {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: #007bff;
+}
+
+.destroy:hover>input[type="submit"] {
+  text-decoration: underline;
+}
+
+.container {
+  margin-top: 60px;
+}
+
+.logout {
+  padding-top: 8px;
+  background: none;
+  border: 0;
+  color: #6d6d6d;
+}
+
+.logout:hover {
+  padding-bottom: 8px;
+  background-color: #db2e41;
+  color: black;
+}
+
+

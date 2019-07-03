@@ -23,6 +23,6 @@ nav.navbar.fixed-top.navbar-expand-lg.navbar-light.bg-light
       if isAuthenticated    
         li.nav-item
           form.nav-destroy(action='/logout', method="POST")
-            input.destroy(type='submit', value="Logout")
+            input.destroy(class='logout' type='submit', value="Logout")
       li.nav-item
         a.nav-link(href='/contact') Contact

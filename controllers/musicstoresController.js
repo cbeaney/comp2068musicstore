@@ -25,23 +25,6 @@ exports.index = (req, res) => {
     });
 }
 
-/*
-exports.index = (req, res) => {
-    req.isAuthenticated();
-
-    Musicstore.find()
-    .then(musicstores => {
-      res.render('musicstores/index', {
-        musicstores: musicstores,
-        title: 'Archive'
-      });
-    })
-    .catch(err => {
-      req.flash('error', `ERROR: ${err}`);
-      res.redirect('/');
-    });
-};
-*/
 
 exports.show = (req, res) => {
     req.isAuthenticated();
@@ -78,30 +61,12 @@ exports.create = (req, res) => {
     });
 };
 
-/*
-exports.create = (req, res) => {
-    req.isAuthenticated();
-
-    Musicstore.create(req.body.musicstore)
-    .then(() => {
-      req.flash('success', 'Your song entry was created!')
-      res.redirect('/musicstore');
-    })
-    .catch(err => {
-      req.flash('error', `ERROR: ${err}`);
-      res.render('musicstores/new', {
-        musicstore: req.body.musicstore,
-        title: 'New Song'
-      });
-    });
-};
-*/
 
 exports.edit = (req, res) => {
     req.isAuthenticated();
 
-    Musicstore.findById({
-      id: req.params.id
+    Musicstore.findOne({
+      _id: req.params.id
     })
       .then(musicstore => {
         res.render('musicstores/edit', {
@@ -140,7 +105,7 @@ exports.destroy = (req, res) => {
   req.isAuthenticated();
 
   Musicstore.deleteOne({
-    _id: req.body._id
+    _id: req.body.id
   })
   .then(() => {
     req.flash('success', 'Your song was deleted successfully.');

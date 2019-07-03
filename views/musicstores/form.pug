@@ -1,4 +1,4 @@
-form(action=(musicstore ? '/musicstores/update' : '/musicstores'), method="POST")
+form(action=(musicstore ? `/musicstores/update` : "/musicstores"), method="POST")
     if musicstore
         input(type="hidden", name="id", value=musicstore.id)
 

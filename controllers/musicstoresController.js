@@ -1,118 +1,59 @@
 const Musicstore = require('../models/musicstore')
 
-exports.new = (req, res) => {
-    req.isAuthenticated();
-
-    res.render('musicstores/new', {
-        title: `New Song Entry`
-      });
-};
-
-
 exports.index = (req, res) => {
- req.isAuthenticated();
-
   Musicstore.find()
-    .then(musicstores => {
-      res.render('musicstores/index', {
-        musicstores: musicstores,
-        title: 'Songs'
-      });
-    })
-    .catch(err => {
-      console.error(`ERROR: ${err}`);
-      res.redirect('/');
-    });
+  .then(musicstores => res.json(musicstores))
+  .catch(err => res.status(418).json(err));
 }
 
-
 exports.show = (req, res) => {
-    req.isAuthenticated();
 
-    Musicstore.findOne({
-      id: req.params.id
+  Musicstore.findOne({
+      _id: req.params.id
     })
-    .then(musicstore => {
-      res.render('musicstores/show', {
-        musicstore: musicstore,
-        title: musicstore.title
-      });
-    })
-    .catch(err => {
-      req.flash('error', `ERROR: ${err}`);
-      res.redirect('/musicstores');
-    });
+    .then(musicstores => res.json(musicstores))
+    .catch(err => res.status(418).json(err));
 };
 
-exports.create = (req, res) => {
-  req.isAuthenticated();
+exports.create = async (req, res) => {
+  if(!req.isAuthenticated()) return res.status(418).send({error: "Not Authenticated"});
 
   Musicstore.create(req.body.musicstore)
-    .then(() => {
-      req.flash("success", "Your new song entry has been create successfully.");
-      res.redirect("/musicstores");
-    })
-    .catch(err => {
-      req.flash("error", `ERROR: ${err}`);
-      res.render("musicstores/new", {
-        musicstore: req.body.musicstore,
-        title: "New Song"
-      });
-    });
+    .then(() => res.status(200).send({success: "Song created"}))
+    .catch(err => res.status(418).send(err));
 };
 
 
 exports.edit = (req, res) => {
-    req.isAuthenticated();
+  if(!req.isAuthenticated()) return res.status(418).send({error: "Not Authenticated"});
 
-    Musicstore.findOne({
+  Musicstore.findOne({
       _id: req.params.id
     })
-      .then(musicstore => {
-        res.render('musicstores/edit', {
-          title: `Edit ${musicstore.title}`,
-          musicstore: musicstore
-        });
-      })
-      .catch(err => {
-        req.flash('error', `ERROR: ${err}`);
-        res.redirect('/musicstores');
-      });
+    .then(musicstores => res.send(musicstores))
+    .catch(err => res.status(418).send(err));
 };
+
 
 exports.update = (req, res) => {
-  req.isAuthenticated();
+  if(!req.isAuthenticated()) return res.status(418).send({error: "Not Authenticated"});
 
   Musicstore.updateOne({
-    _id: req.body.id
-  }, req.body.musicstore, {
-    runValidators: true
-  })
-  .then(() => {
-    req.flash('success', 'Your song was updated!')
-    res.redirect('/musicstores');
-  })
-  .catch(err => {
-    req.flash('error', `ERROR: ${err}`);
-    res.render('musicstores/edit', {
-      musicstore: req.body.musicstore,
-      title: `Edit ${req.body.musicstore.title}`
-    });
-  });
+      _id: req.body.id
+    }, req.body.musicstore, {
+      runValidators: true
+    })
+    .then(() => res.status(200).send({success: "Song updated successfully"}))
+    .catch(err => res.status(418).send(err));
 };
 
+
 exports.destroy = (req, res) => {
-  req.isAuthenticated();
+  if(!req.isAuthenticated()) return res.status(418).send({error: "Not Authenticated"});
 
   Musicstore.deleteOne({
-    _id: req.body.id
-  })
-  .then(() => {
-    req.flash('success', 'Your song was deleted successfully.');
-    res.redirect("/musicstores");
-  })
-  .catch(err => {
-    req.flash('error', `ERROR: ${err}`);
-    res.redirect('/musicstores');
-  });
+      _id: req.body.id
+    })
+    .then(() => res.status(200).send({success: "Song deleted successfully"}))
+    .catch(err => res.status(418).send(err));
 };

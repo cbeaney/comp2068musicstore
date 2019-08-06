@@ -5,7 +5,7 @@ const router = require('express').Router();
 const MusicstoresController = require('../controllers/musicstoresController');
 
 // Our routes
-router.get(`/new`, MusicstoresController.new);
+//router.get(`/new`, MusicstoresController.new);
 router.get(`/`, MusicstoresController.index);
 router.get(`/:id`, MusicstoresController.show);
 router.get(`/:id/edit`, MusicstoresController.edit);

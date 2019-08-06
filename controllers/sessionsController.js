@@ -1,39 +1,33 @@
 const User = require('../models/user');
-
-exports.login = (req, res) => {
-    res.render('sessions/login', {
-        title: 'Login to BBC Music Store'
-    });
-};
+const jwt = require("jsonwebtoken");
 
 exports.authenticate = (req, res) => {
-    User.findOne({email: req.body.email
+  User.findOne({
+      email: req.body.email
     })
     .then(user => {
-        if (!user) throw new Error('ERROR: Your Credentias do not match');
+      user.authenticate(req.body.password, (err, isMatch) => {
+        if (err) throw new Error(err);
 
-        user.authenticate(req.body.password, (err, isMatch) => {
-            if (err) throw new Error(err);
+        if (isMatch) {
+          req.session.userId = user.id;
 
-            if (isMatch) {
-                req.session.userId = user.id;
-
-                req.flash('success', 'You are now logged in!');
-                res.redirect('/');
-            } else {
-                req.flash('error', 'ERROR: Your credentials do not match');
-                res.redirect('/login');
-            }
-        });
+          const token = jwt.sign({payload: req.body.email}, "bobthebuilder", {expiresIn: "1h"})
+          res.cookie('token', token, {httpOnly: true}).status(201).send({ success: "Authenticated successfully"});
+        } else {
+          res.json({error: "Your credentials do not match"});
+        }
+      });
     })
     .catch(err => {
-        req.flash('error', `ERROR: ${err}`);
-        res.redirect('/login');
+      res.status(404).json(err);
     });
 };
 
+
 exports.logout = (req, res) => {
-    req.session.userId = null;
-    req.flash('success', 'You are now logged out');
-    res.redirect('/');
+ if(!res.isAuthenticated()) res.status(401).send({error: "Could not authenticate request"})
+
+ req.session.userId = null
+ res.clearCookie('token').status({success: "You are now logged out"});
 };

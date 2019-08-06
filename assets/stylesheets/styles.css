@@ -11,13 +11,17 @@ body {
     background-color: #db2e41;
   }
 
-  .container,
-.flash {
+.container, .flash {
   margin-top: 60px;
 }
 
+.aboutText {
+  font-size: 40px;
+  color:red;
+  text-align: center;
+}
 
-.h1, h1 {
+.h1 {
   font-size: 5rem;
   color: #ffffff;
   text-align: center;

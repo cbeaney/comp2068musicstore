@@ -86,9 +86,12 @@ const routes = require('./routes.js');
 app.use('/api', routes);
 
 // Handles any requests that don't match the ones above
-app.get('*', (req, res) => {
-  console.log(req.path);
-  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+const root = path.join(__dirname, '/client/build');
+app.use(express.static(root));
+app.use((req, res, next) => {
+  if (req.method === 'GET' && req.accepts('html') && !req.is('json') && !req.path.includes('.')) {
+    res.sendFile('index.html', { root });
+  } else next();
 });
 
 // Starting our server on port 4000
